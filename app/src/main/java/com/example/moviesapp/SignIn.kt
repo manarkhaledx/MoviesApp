@@ -23,30 +23,54 @@ class SignIn : AppCompatActivity() {
         }
 
         binding.signInBtn.setOnClickListener {
-            val email = binding.userNameEt.text.toString()
-            val password = binding.userNameEt.text.toString()
+            binding.userNameEtLayout.error = null
+            binding.passwordEtLayout.error = null
+
+            val username = binding.userNameEt.text.toString().trim()
+            val password = binding.passwordEt.text.toString()
             when {
-                email.isEmpty() -> {
-                    binding.userNameEtLayout.error = "Email is required"
+                username.isEmpty() && password.isEmpty() -> {
+                    binding.userNameEtLayout.error = "Username is required"
+                    binding.passwordEtLayout.error = "Password is required"
                 }
 
-                password.isEmpty() || password.length < 8 || !password.contains(Regex("[^A-Za-z0-9 ]")) -> {
+                username.isEmpty() -> {
+                    binding.userNameEtLayout.error = "Username is required"
+                }
+
+                password.isEmpty() -> {
+                    binding.passwordEtLayout.error = "Password is required"
+                }
+
+                !isPasswordValid(password) -> {
                     binding.passwordEtLayout.error =
                         "Password must be at least 8 characters and contain a special character"
                 }
 
+
                 else -> {
-                    binding.userNameEtLayout.error = null
-                    binding.passwordEtLayout.error = null
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("username", binding.userNameEt.text.toString())
+                    startActivity(intent)
                 }
             }
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("username", binding.userNameEt.text.toString())
-            startActivity(intent)
+        }
+        binding.userNameEt.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) binding.userNameEtLayout.error = null
         }
 
+        binding.passwordEt.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) binding.passwordEtLayout.error = null
+        }
+    }
 
-
-
+    private fun isPasswordValid(password: String): Boolean {
+        return password.length >= 8 && password.contains(Regex("[^A-Za-z0-9 ]"))
     }
 }
+
+
+
+
+
+
