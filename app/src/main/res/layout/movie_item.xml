@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:padding="8dp">
+
+
+        <ImageView
+            android:id="@+id/movieImage"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:contentDescription="Movie Poster"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/movieName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:layout_marginStart="5dp"
+            android:text="Movie Name"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_margin="8dp"
+            app:layout_constraintStart_toEndOf="@id/movieImage"
+            app:layout_constraintTop_toTopOf="@id/movieImage" />
+
+        <TextView
+            android:id="@+id/movieDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Short description"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/movieName"
+            app:layout_constraintTop_margin="4dp"
+            app:layout_constraintTop_toBottomOf="@id/movieName" />
+
+
+        <TextView
+            android:id="@+id/movieDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Director"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/movieDescription"
+            app:layout_constraintTop_margin="4dp"
+            app:layout_constraintTop_toBottomOf="@id/movieDescription" />
+
+
+        <TextView
+            android:id="@+id/moviePublishDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publish date"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/movieDetails"
+            app:layout_constraintTop_margin="4dp"
+            app:layout_constraintTop_toBottomOf="@id/movieDetails" />
+
+
+        <TextView
+            android:id="@+id/movieRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Rate: 8.5"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/movieDetails"
+            app:layout_constraintTop_margin="4dp"
+            app:layout_constraintTop_toBottomOf="@id/movieDetails" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
